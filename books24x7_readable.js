@@ -1,12 +1,25 @@
 // ==UserScript==
-// @name  books24x7_readable - (chapter section)
+// @name  Books 24x7 Readable
 // @namespace http://zhangtai.me
 // @description New version - (chapter section)
 // @author  Zhang Tai
-// @version 1.3
+// @version 1.4
 // @require jquery.js
 // @include http://*.books24x7.com/assetviewer.aspx*
 // ==/UserScript==
+
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+    if (e.keyCode == '37') {
+       // left arrow
+        $('#newPrevPage').click();
+    }
+    else if (e.keyCode == '39') {
+       // right arrow
+        $('#newNextPage').click();
+    }
+}
 
 $(document).ready(function(){
     // Font change
@@ -68,6 +81,7 @@ $(document).ready(function(){
   $( ".progress" ).click(function() {
       $( "#MenuTD" ).toggle( "fast" );
     });
+    
     
     $('#newNextPage').click(function() {
       if (chunkIndex < chunkid.length - 1) {

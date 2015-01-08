@@ -1,32 +1,32 @@
 // ==UserScript==
-// @name	books24x7_readable - (chapter section)
-// @namespace	http://zhangtai.me
-// @description	New version - (chapter section)
-// @author	Zhang Tai
-// @version	1.3
+// @name  books24x7_readable - (chapter section)
+// @namespace http://zhangtai.me
+// @description New version - (chapter section)
+// @author  Zhang Tai
+// @version 1.3
 // @require jquery.js
-// @include	http://*.books24x7.com/assetviewer.aspx*
+// @include http://*.books24x7.com/assetviewer.aspx*
 // ==/UserScript==
 
 $(document).ready(function(){
     // Font change
     (function(font) {
-	var	head = document.getElementsByTagName('head')[0],
-		link = document.createElement('link'),
-		style = document.createElement('style'),
-		rules = document.createTextNode('#ctl00_ContentPlaceHolder1_ContentPanel * { font-family: "' + font.family + '", arial, sans-serif }');
+  var head = document.getElementsByTagName('head')[0],
+    link = document.createElement('link'),
+    style = document.createElement('style'),
+    rules = document.createTextNode('#ctl00_ContentPlaceHolder1_ContentPanel * { font-family: "' + font.family + '", arial, sans-serif }');
 
     link.rel  = 'stylesheet';
-	link.href = '//fonts.googleapis.com/css?family=' + font.family + ':' + (font.style || []) + '&subset=' + (font.subset || ['latin']);
-	head.appendChild(link);
-	
-	style.styleSheet ? style.styleSheet.cssText = rules.nodeValue : style.appendChild(rules);
-	head.appendChild(style);
+  link.href = '//fonts.googleapis.com/css?family=' + font.family + ':' + (font.style || []) + '&subset=' + (font.subset || ['latin']);
+  head.appendChild(link);
+  
+  style.styleSheet ? style.styleSheet.cssText = rules.nodeValue : style.appendChild(rules);
+  head.appendChild(style);
     
     })({ family:'Alef', style:['400','700'] });   //End of the fonts, candidates: Open Sans Condensed, Antic Slab, Bitter, Nunito, Alef
     
     // Page navi panel
-	$("#download").after("<a id='newPrevPage' href='#'><span class='pageNaviIndictor'><</span></a><a id='newNextPage' href='#'><span class='pageNaviIndictor'>></span></a>");  
+  $("#download").after("<a id='newPrevPage' href='#' accesskey=','><span class='pageNaviIndictor'><</span></a><a id='newNextPage' href='#' accesskey='.'><span class='pageNaviIndictor'>></span></a>");  
     
     // Get all current chapter articles
     var bookID = $('#ctl00_ContentPlaceHolder1_ChapterMenuSection_AssetIdHidden').attr('value');
@@ -59,13 +59,13 @@ $(document).ready(function(){
 
       }
     
-	
+  
     
     // Page navigation.
     var chunkIndex = 0;
     var initProgressChapter = Math.round((chunkIndex + 1) * 100 / chunkid.length);
     $( "#UnattachedAnnotationsHere" ).after("<div class='progress'><div id='progress-bar' class='progress-bar' role='progressbar' aria-valuenow='60' aria-valuemin='0' aria-valuemax='100' style='width: " + initProgressChapter + "%;'></div></div>");
-	$( ".progress" ).click(function() {
+  $( ".progress" ).click(function() {
       $( "#MenuTD" ).toggle( "fast" );
     });
     

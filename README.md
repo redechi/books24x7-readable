@@ -3,7 +3,7 @@
 Make books24x7.com much readable.
 Please install Tampermonkey/Greasemonkey and Stylish first.
 
-* Preload for the secions of current chapter
+* Preload for the sections of current chapter
 * Fonts change
 * Progress bar/indicator
 * Full screen reading (by clicking the progress bar to hide sidebar)
